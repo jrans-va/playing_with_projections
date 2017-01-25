@@ -1,9 +1,7 @@
 # Python client
 
-Python 3 is required
+Compatible with Python 2.6+ & Python 3.3+
 
 ## running:
 
 `python main.py`
-
-

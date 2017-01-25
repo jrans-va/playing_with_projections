@@ -1,15 +1,14 @@
-import http.client
+import requests
 import json
 
 
 def parse_events_from_http(stream):
-    conn = http.client.HTTPSConnection("playing-with-projections.herokuapp.com")
-    conn.request("GET", "/stream/" + stream)
-
-    data = conn.getresponse().read().decode("utf-8")
+    req = requests.request("GET", "playing-with-projections.herokuapp.com/stream/{}".format(stream))
+    data = req.content.decode("utf-8")
 
     events = json.loads(data)
     return events
+
 
 def parse_events_from_file(stream):
     with open("../data/" + stream + ".json") as json_file:
